@@ -13,8 +13,8 @@ def write_tree(gitdir: pathlib.Path, index: tp.List[GitIndexEntry], dirname: str
     tree_content: tp.List[tp.Tuple[int, str, bytes]] = []
     subtrees: tp.Dict[str, tp.List[GitIndexEntry]] = dict()
     files = []
-    for x in (gitdir.parent / dirname).glob("*"):
-        files.append(str(x))
+    for i in (gitdir.parent / dirname).glob("*"):
+        files.append(str(i))
     for entry in index:
         if entry.name in files:
             tree_content.append((entry.mode, str(gitdir.parent / entry.name), entry.sha1))
